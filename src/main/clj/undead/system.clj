@@ -1,12 +1,7 @@
 (ns undead.system
-  (:require [org.httpkit.server :refer [run-server]]
-            [com.stuartsierra.component :as component]))
-
-(defn app
-  [req]
-  {:status  200
-   :headers {"Content-Type" "text/html"}
-   :body    "Heeeey!"})
+  (:require [com.stuartsierra.component :as component]
+            [org.httpkit.server :refer [run-server]]
+            [undead.web :as web]))
 
 (defn- start-server
   [handler port]
@@ -22,7 +17,7 @@
 (defrecord ParensOfTheDead []
   component/Lifecycle
   (start [this]
-    (assoc this :server (start-server #'app 3000)))
+    (assoc this :server (start-server #'web/app 3000)))
 
   (stop [this]
     (stop-server (:server this))

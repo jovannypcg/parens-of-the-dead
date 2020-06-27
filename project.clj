@@ -11,6 +11,7 @@
                    [lein-nsorg "0.3.0"]]
 
   :dependencies   [[com.stuartsierra/component "1.0.0"]
+                   [compojure "1.6.1"]
                    [http-kit "2.3.0"]
                    [org.clojure/clojure "1.10.1"]
                    [reloaded.repl "0.2.4"]]
