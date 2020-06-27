@@ -6,7 +6,7 @@
   [req]
   {:status  200
    :headers {"Content-Type" "text/html"}
-   :body    "Hello HTTP"})
+   :body    "Heeeey!"})
 
 (defn- start-server
   [handler port]
@@ -22,7 +22,7 @@
 (defrecord ParensOfTheDead []
   component/Lifecycle
   (start [this]
-    (assoc this :server (start-server app 3000)))
+    (assoc this :server (start-server #'app 3000)))
 
   (stop [this]
     (stop-server (:server this))

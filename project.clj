@@ -12,7 +12,8 @@
 
   :dependencies   [[com.stuartsierra/component "1.0.0"]
                    [http-kit "2.3.0"]
-                   [org.clojure/clojure "1.10.1"]]
+                   [org.clojure/clojure "1.10.1"]
+                   [reloaded.repl "0.2.4"]]
 
   :profiles       {:dev {:plugins []
                          :dependencies []
