@@ -14,12 +14,24 @@
                    [compojure "1.6.1"]
                    [http-kit "2.3.0"]
                    [org.clojure/clojure "1.10.1"]
-                   [reloaded.repl "0.2.4"]]
-
-  :profiles       {:dev {:plugins []
-                         :dependencies []
-                         :source-paths ["dev"]}}
+                   [org.clojure/clojurescript "1.10.764"]]
 
   :aliases        {"lint-fix" ["do"
                                ["nsorg" "--replace"]
-                               ["cljfmt" "fix"]]})
+                               ["cljfmt" "fix"]]}
+
+  :profiles       {:dev {:plugins      [[lein-cljsbuild "1.1.8"]
+                                        [lein-figwheel "0.5.20"]]
+                         :dependencies [[reloaded.repl "0.2.4"]]
+                         :source-paths ["dev"]
+
+                         ;; NPE exception is thrown when missing keys
+                         ;; https://clojurians-log.clojureverse.org/figwheel/2018-04-23
+                         :cljsbuild {:builds [{:id "main"
+                                               :source-paths ["src/" "dev/"]
+                                               :figwheel true
+                                               :compiler {:output-to            "target/classes/public/app.js"
+                                                          :output-dir           "target/classes/public/out"
+                                                          :optimizations        :none
+                                                          :recompile-dependents true
+                                                          :source-map           true}}]}}})
