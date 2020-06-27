@@ -1,5 +1,6 @@
 (ns undead.web
-  (:require [compojure.core :refer [defroutes GET]]))
+  (:require [compojure.core :refer [defroutes GET]]
+            [compojure.route :refer [resources]]))
 
 (defn index
   [req]
@@ -8,4 +9,5 @@
    :body    "Hello from Compojure routes!"})
 
 (defroutes app
-  (GET "/" [] index))
+  (GET "/" [] index)
+  (resources "/")) ;; resources serves from public by default
